@@ -10,7 +10,7 @@ http.createServer(function (req, res) {
       res.end('Error talking to redis ' + err + '\n');
     }
 
-    client.lpush('cips', ip. function(err){
+    client.lpush(['cips', ip], function(err){
       if(err){
       return res.writeHead(500, {'Content-Type': 'text/plain'});
       res.end('Error talking to redis ' + err + '\n');
@@ -20,7 +20,7 @@ http.createServer(function (req, res) {
     client.pfcount('clientips', function(err, count){
       res.writeHead(500, {'Content-Type': 'text/plain'});
 
-      return res.end('Hello ' + ip + '\n about ' + count + ' unique connections have visited this site!');
+      return res.end('Hello \n about ' + count + ' unique connections have visited this site!');
       
     });
   });
