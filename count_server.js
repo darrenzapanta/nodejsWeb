@@ -20,7 +20,7 @@ http.createServer(function (req, res) {
     client.pfcount('clientips', function(err, count){
       res.writeHead(500, {'Content-Type': 'text/plain'});
 
-      return res.end('Hello \n about ' + count + ' unique connections have visited this site!');
+      return res.end('Hello \n about ' + count);
       
     });
   });
