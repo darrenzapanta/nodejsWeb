@@ -4,12 +4,12 @@ var http = require('http');
 http.createServer(function (req, res) {
 
   var ip = req.connection.remoteAddress || req.headers['x-forwarded-for'];
-  client.pfadd('clientips', ip, function(err){
+  client.pfadd('clientips', ip, function(err,reply){
     if(err){
       return res.writeHead(500, {'Content-Type': 'text/plain'});
       res.end('Error talking to redis ' + err + '\n');
     }
-
+    if(reply == 1)
     client.lpush(['cips', ip], function(err){
       if(err){
       return res.writeHead(500, {'Content-Type': 'text/plain'});
